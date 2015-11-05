@@ -5,7 +5,7 @@ def readme():
         return f.read()
 
 setup(name='PlateReader',
-      version='0.145',
+      version='0.146',
       description='Software for counting and quantifying colonies on nutrient plates',
       url='http://github.com/rasmusagren/platereader',
       author='Rasmus Agren',

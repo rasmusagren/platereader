@@ -200,5 +200,4 @@ class PlateReader(object):
             
 if __name__ == "__main__":
     """ Run the program."""
-    plateReader=PlateReader()
-    plateReader.showGUI()
+    PlateReader().showGUI()

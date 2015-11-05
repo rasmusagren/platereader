@@ -1,5 +1,4 @@
-import engine
+from platereader.engine import PlateReader
 
-#Start the program if called from the commandline
-pr=engine.PlateReader()
-pr.showGUI()
+#Start the program if called from the command line
+PlateReader().showGUI()

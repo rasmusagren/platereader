@@ -8,6 +8,7 @@ from datetime import datetime
 import tempfile
 import cv2
 import my
+from sys import platform #This is just to be able to open pdf on OS X
 
 class GUI(object):
     """ The GUI."""
@@ -371,7 +372,10 @@ class GUI(object):
         #This was used to the PyInstaller to understand the path when making only
         #one exe-file
         #subprocess.Popen(my.resource_path('data/manual.pdf'),shell=True)
-        subprocess.Popen(os.path.join(os.path.dirname(__file__),'docs/manual.pdf'),shell=True)
+        if platform=="darwin":
+            os.system("open " + os.path.join(os.path.dirname(__file__),'docs/manual.pdf'))
+        else:
+            subprocess.Popen(os.path.join(os.path.dirname(__file__),'docs/manual.pdf'),shell=True)
         
     def on_window_destroy(self, widget, data=None):
         """ Quit the main GUI loop."""
