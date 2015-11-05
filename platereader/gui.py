@@ -3,7 +3,7 @@ import gtk
 import numpy as np
 import os
 import subprocess
-import PyRTF
+import rtfw as PyRTF
 from datetime import datetime
 import tempfile
 import cv2
@@ -54,7 +54,10 @@ class GUI(object):
         
         self._controller=controller #This contains the controlling object
         builder=gtk.Builder()
-        builder.add_from_file(my.resource_path('gui.glade'))
+        #This was used to the PyInstaller to understand the path when making only
+        #one exe-file
+        #builder.add_from_file(my.resource_path('gui.glade'))
+        builder.add_from_file(os.path.join(os.path.dirname(__file__),'gui.glade'))
         
         #Load all widgets which will be referred to in the callbacks       
         self._w['window']=builder.get_object('window')
@@ -304,7 +307,10 @@ class GUI(object):
     def on_menuLoadSample_activate(self, widget, data=None):
         """ Load a sample image."""
      
-        self._controller.loadImage(my.resource_path('sample.jpg'))
+        #This was used to the PyInstaller to understand the path when making only
+        #one exe-file
+        #self._controller.loadImage(my.resource_path('sample.jpg'))
+        self._controller.loadImage(os.path.join(os.path.dirname(__file__),'sample.jpg'))
         self.changeEnabled(True,[])       
         
     def on_menuAbout_activate(self, widget, data=None):
@@ -312,9 +318,9 @@ class GUI(object):
 
         about = gtk.AboutDialog()
         about.set_program_name("PlateReader")
-        about.set_version("0.14")
+        about.set_version("0.15")
         about.set_copyright("(c) Novo Nordisk A/S")
-        about.set_comments("This software is not to be distributed outside of Novo Nordisk. Please contact Rasmus Ågren (RAAG) for any questions or comments.")
+        about.set_comments("Please contact Rasmus Ågren (rasmus@alembic.se) for any questions or comments.")
         about.run()
         about.destroy()    
         
@@ -361,7 +367,11 @@ class GUI(object):
             
     def on_menuManual_activate(self, widget, data=None):
         """ Open the manual in the default PDF reader."""
-        subprocess.Popen(my.resource_path('manual.pdf'),shell=True)
+        
+        #This was used to the PyInstaller to understand the path when making only
+        #one exe-file
+        #subprocess.Popen(my.resource_path('data/manual.pdf'),shell=True)
+        subprocess.Popen(os.path.join(os.path.dirname(__file__),'docs/manual.pdf'),shell=True)
         
     def on_window_destroy(self, widget, data=None):
         """ Quit the main GUI loop."""

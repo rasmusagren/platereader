@@ -1,7 +1,7 @@
 from plateimage import PlateImage
 from gui import GUI
-import Tkinter #This should not be required, but is needed for Py-Installer
-import FileDialog #This should not be required, but is needed for Py-Installer
+#import Tkinter #This should not be required, but is needed for Py-Installer
+#import FileDialog #This should not be required, but is needed for Py-Installer
 
 class PlateReader(object):
     """ Main controller for the PlateReader software.
