@@ -1,0 +1,4 @@
+include README.rst
+include platereader/gui.glade
+include platereader/sample.jpg
+include platereader/docs/manual.pdf
